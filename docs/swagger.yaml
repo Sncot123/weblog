@@ -1,0 +1,439 @@
+basePath: 这里写base path
+definitions:
+  controllers.ResponseData:
+    properties:
+      code:
+        description: 业务响应状态码
+        type: integer
+      data:
+        description: 数据
+      msg:
+        description: 提示信息
+    type: object
+host: 这里写接口服务的host
+info:
+  contact:
+    email: sncot123@aliyun.com
+    name: 红木资本
+    url: http://www.swagger.io/support
+  description: 这是我李某人些的第一个web后端，我去，忒激动了
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: bluebell这是我写的第一个项目
+  version: "1.0"
+paths:
+  /Login:
+    post:
+      consumes:
+      - application/json
+      description: 根据账号密码登录的接口
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      - description: 用户密码
+        in: query
+        name: password
+        type: string
+      - description: 用户id
+        in: query
+        name: userID
+        type: integer
+      - description: 用户名称
+        in: query
+        name: userName
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.ResponseData'
+      security:
+      - ApiKeyAuth: []
+      summary: 登录1
+      tags:
+      - 登录相关的接口
+  /community:
+    get:
+      consumes:
+      - application/json
+      description: 可按社区按时间或分数排序查询帖子列表接口
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      - description: 社区id
+        in: query
+        name: id
+        type: integer
+      - description: 社区名称
+        in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.ResponseData'
+      security:
+      - ApiKeyAuth: []
+      summary: 查询社区的接口1
+      tags:
+      - 社区相关的接口
+  /community/:id:
+    get:
+      consumes:
+      - application/json
+      description: 可按社区按时间或分数排序查询帖子列表接口
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      - description: 创建时间
+        in: query
+        name: create_time
+        type: string
+      - description: 社区id
+        in: query
+        name: id
+        type: integer
+      - description: 社区介绍
+        in: query
+        name: introduction
+        type: string
+      - description: 社区名称
+        in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.ResponseData'
+      security:
+      - ApiKeyAuth: []
+      summary: 获取社区详细信息的接口1
+      tags:
+      - 社区相关的接口
+  /post:
+    post:
+      consumes:
+      - application/json
+      description: 可按社区按时间或分数排序查询帖子列表接口
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      - description: 帖子的作者id
+        in: query
+        name: author_id
+        type: integer
+      - description: 必填 帖子所属社区id
+        in: query
+        name: community_id
+        required: true
+        type: integer
+      - description: 必填 帖子的内容
+        in: query
+        name: content
+        required: true
+        type: string
+      - description: 帖子的创建时间
+        in: query
+        name: create_time
+        type: string
+      - description: 自动生成 帖子的id
+        in: query
+        name: id
+        type: integer
+      - description: 选填 帖子的状态
+        in: query
+        name: status
+        type: integer
+      - description: 必填 帖子的标题
+        in: query
+        name: title
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.ResponseData'
+      security:
+      - ApiKeyAuth: []
+      summary: 创建帖子1
+      tags:
+      - 帖子相关的接口
+  /post/:id:
+    get:
+      consumes:
+      - application/json
+      description: 获取帖子的详细信息2
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      - description: 创建时间
+        in: query
+        name: create_time
+        type: string
+      - description: 社区id
+        in: query
+        name: id
+        type: integer
+      - description: 社区介绍
+        in: query
+        name: introduction
+        type: string
+      - description: 社区名称
+        in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.ResponseData'
+      security:
+      - ApiKeyAuth: []
+      summary: 获取帖子详细信息1
+      tags:
+      - 帖子相关的接口
+  /post2:
+    get:
+      consumes:
+      - application/json
+      description: 按时间或分数排序查询帖子列表的接口
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      - description: 创建时间
+        in: query
+        name: create_time
+        type: string
+      - description: 社区id
+        in: query
+        name: id
+        type: integer
+      - description: 社区介绍
+        in: query
+        name: introduction
+        type: string
+      - description: 社区名称
+        in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.ResponseData'
+      security:
+      - ApiKeyAuth: []
+      summary: 根据帖子的创建时间或者帖子的分数排序获取得帖子列表的接口1
+      tags:
+      - 帖子相关的接口
+  /postByCommunity:
+    get:
+      consumes:
+      - application/json
+      description: 可按社区按时间或分数排序查询帖子列表接口
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      - description: 创建时间
+        in: query
+        name: create_time
+        type: string
+      - description: 社区id
+        in: query
+        name: id
+        type: integer
+      - description: 社区介绍
+        in: query
+        name: introduction
+        type: string
+      - description: 社区名称
+        in: query
+        name: name
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.ResponseData'
+      security:
+      - ApiKeyAuth: []
+      summary: 获取社区帖子列表信息1
+      tags:
+      - 社区相关的接口
+  /posts:
+    get:
+      consumes:
+      - application/json
+      description: 可按社区按时间或分数排序查询帖子列表接口
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      - description: 帖子的作者id
+        in: query
+        name: author_id
+        type: integer
+      - description: 作者姓名
+        in: query
+        name: author_name
+        type: string
+      - description: 必填 帖子所属社区id
+        in: query
+        name: community_id
+        required: true
+        type: integer
+      - description: 社区名称
+        in: query
+        name: community_name
+        type: string
+      - description: 必填 帖子的内容
+        in: query
+        name: content
+        required: true
+        type: string
+      - description: 创建时间
+        in: query
+        name: create_time
+        type: string
+      - description: 社区id
+        in: query
+        name: id
+        type: integer
+      - description: 社区介绍
+        in: query
+        name: introduction
+        type: string
+      - description: 社区名称
+        in: query
+        name: name
+        type: string
+      - description: 选填 帖子的状态
+        in: query
+        name: status
+        type: integer
+      - description: 必填 帖子的标题
+        in: query
+        name: title
+        required: true
+        type: string
+      - description: 帖子的投票数量
+        in: query
+        name: votedate
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.ResponseData'
+      security:
+      - ApiKeyAuth: []
+      summary: 获取社区帖子列表信息1
+      tags:
+      - 社区相关的接口
+  /signup:
+    post:
+      consumes:
+      - application/json
+      description: 注册用户
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      - description: 用户密码
+        in: query
+        name: password
+        type: string
+      - description: 用户id
+        in: query
+        name: userID
+        type: integer
+      - description: 用户名称
+        in: query
+        name: userName
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.ResponseData'
+      security:
+      - NoApiKeyAuth: []
+      summary: 注册用户1
+      tags:
+      - 登录相关的接口
+  /vote:
+    post:
+      consumes:
+      - application/json
+      description: 给帖子投票的接口2
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      - description: 投票类型
+        enum:
+        - 0
+        - 1
+        - -1
+        example: "0"
+        in: query
+        name: direction
+        type: string
+      - description: 帖子id
+        in: query
+        name: post_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.ResponseData'
+      security:
+      - ApiKeyAuth: []
+      summary: 用于给帖子投票1
+      tags:
+      - 帖子相关的接口
+swagger: "2.0"
